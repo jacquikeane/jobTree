@@ -66,7 +66,7 @@ class MemoryString:
         return cmp(self.bytes, other.bytes)
 
 def prepareBsub(cpu, mem):
-	mem = '' if mem is None else '-R "select[type==X86_64 && mem > ' + str(int(mem/ 1000000)) + '] rusage[mem=' + str(int(mem/ 1000000)) + ']" -M' + str(int(mem/ 1000000)) + '000'
+	mem = '' if mem is None else '-R "select[type==X86_64 && mem > ' + str(int(mem/ 1000000)) + '] rusage[mem=' + str(int(mem/ 1000000)) + ']" -M' + str(int(mem/ 1000000))
 	cpu = '' if cpu is None else '-n ' + str(int(cpu))
 	bsubline = ["bsub", mem, cpu,"-cwd", ".", "-o", "/dev/null", "-e", "/dev/null"]
 	return bsubline
